@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Glenn CSF</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            background-color: white;
+        }
+
+        /* Header */
+        .header {
+            background-color: #1a1a1a;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #333;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background-color: #4a90e2;
+            border-radius: 50%;
+            background-image: url('csflogo.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .menu-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #4a90e2;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-icon:hover {
+            background-color: #357abd;
+        }
+
+        .menu-line {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* Navigation Menu */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background-color: #1a1a1a;
+            border-left: 2px solid #333;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .nav-menu.open {
+            right: 0;
+        }
+
+        .nav-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+
+        .nav-menu-title {
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .nav-menu-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu-item {
+            margin-bottom: 20px;
+        }
+
+        .nav-menu-link {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 0;
+            display: block;
+            border-bottom: 1px solid #333;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu-link:hover {
+            color: #4a90e2;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        .overlay.open {
+            display: block;
+        }
+
+        /* Navigation Icons - Moved up */
+        .nav-icons {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border: 2px solid #333;
+            margin: 20px auto;
+            width: 70%;
+            box-sizing: border-box;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            position: relative;
+            height: 100px;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #4a90e2;
+            text-decoration: none;
+            cursor: pointer;
+            flex: 1;
+            position: relative;
+        }
+
+        .nav-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #4a90e2;
+        }
+
+        .nav-item:nth-child(2),
+        .nav-item:nth-child(3) {
+            transform: translateY(3px);
+        }
+
+        .nav-icon {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #4a90e2;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .nav-label {
+            font-size: 14px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* Mission Statement */
+        .mission-section {
+            background-color: #1a1a1a;
+            padding: 60px 40px;
+            text-align: center;
+            width: 75%;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+
+        .mission-box {
+            border: 2px solid white;
+            padding: 60px 80px;
+            display: inline-block;
+            background-color: transparent;
+            background-image: url('graduation.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mission-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .mission-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .mission-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fbcf20;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .mission-subtitle {
+            font-size: 28px;
+            font-weight: normal;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* Slideshow */
+        .slideshow-section {
+            background-color: #1a1a1a;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 75%;
+            margin: 20px auto;
+            box-sizing: border-box;
+        }
+
+        .slideshow-nav {
+            font-size: 48px;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            padding: 0 30px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .slideshow-nav.prev {
+            left: 10px;
+        }
+
+        .slideshow-nav.next {
+            right: 10px;
+        }
+
+        .slideshow-section:hover .slideshow-nav {
+            opacity: 1;
+        }
+
+        .slideshow-content {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .slideshow-box {
+            border: 2px solid white;
+            padding: 80px 120px;
+            display: inline-block;
+            background-color: transparent;
+            min-width: 600px;
+            min-height: 410px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .slide.active {
+            display: block;
+        }
+        /* slideshow images */
+        .slide-1 { background-image: url('slide1.jpg'); }
+        .slide-2 { background-image: url('slide2.png'); }
+        .slide-3 { background-image: url('slide3.jpg'); }
+        .slide-4 { background-image: url('slide4.jpg'); }
+        .slide-5 { background-image: url('slide5.jpg'); }
+        .slide-6 { background-image: url('slide6.jpg'); }
+        .slide-7 { background-image: url('slide7.jpg'); }
+        .slide-8 { background-image: url('slide8.jpg'); }
+
+        .slideshow-title {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .slideshow-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #666;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: white;
+        }
+
+        /* Contact Section - Footer */
+        .contact-section {
+            background-color: #1a1a1a;
+            padding: 40px;
+            width: 100%;
+            margin-top: 40px;
+            box-sizing: border-box;
+            border-top: 2px solid #333;
+        }
+
+        .contact-title {
+            color: #fbcf20;
+            font-size: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .contact-items {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: white;
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            border: 2px solid white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .contact-icon.instagram {
+            background-image: url('instagram-icon.png');
+        }
+
+        .contact-icon.remind {
+            background-image: url('remind-icon.png');
+        }
+
+        .contact-icon.website {
+            background-image: url('johnlgo.png');
+        }
+
+        .contact-icon.email {
+            background-image: url('email-icon.png');
+        }
+
+        .contact-icon span {
+            display: none;
+        }
+
+        .contact-icon:not([class*="instagram"]):not([class*="remind"]):not([class*="website"]):not([class*="email"]) span {
+            display: block;
+        }
+
+        .contact-label {
+            font-size: 16px;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 20px;
+                height: auto;
+            }
+
+            .nav-item:not(:last-child)::after {
+                display: none;
+            }
+
+            .slideshow-nav {
+                font-size: 36px;
+                padding: 0 15px;
+            }
+
+            .contact-items {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .mission-box {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo"></div>
+                <div class="logo-text">John Glenn High School: CSF</div>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="nav-menu" id="navMenu">
+            <div class="nav-menu-header">
+                <div class="nav-menu-title">Navigation</div>
+                <button class="close-btn" onclick="toggleMenu()">&times;</button>
+            </div>
+            <ul class="nav-menu-items">
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">Home</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">About Us</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">Member Requirements</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">Awards<br>Recognition</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">Events</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">Committee</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+        <!-- Mission Statement -->
+        <div class="mission-section">
+            <div class="mission-box">
+                <div class="mission-content">
+                    <div class="mission-title">Scholars for Service</div>
+                    <div class="mission-subtitle">MISSION</div>
+                    <div class="mission-subtitle">Statement</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Icons - Moved under mission statement -->
+        <div class="nav-icons">
+            <div class="nav-container">
+                <a href="#" class="nav-item">
+                    <div class="nav-icon">👥</div>
+                    <div class="nav-label">About us</div>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon">📝</div>
+                    <div class="nav-label">Member Requirements</div>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon">🏆</div>
+                    <div class="nav-label">Awards <br> Recognition</div>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon">🎓</div>
+                    <div class="nav-label">Events</div>
+                </a>
+                <a href="#" class="nav-item">
+                    <div class="nav-icon">📢</div>
+                    <div class="nav-label">Committee</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Slideshow -->
+        <div class="slideshow-section">
+            <div class="slideshow-nav prev" onclick="previousSlide()">‹</div>
+            <div class="slideshow-content">
+                <div class="slideshow-box">
+                    <div class="slide slide-1 active"></div>
+                    <div class="slide slide-2"></div>
+                    <div class="slide slide-3"></div>
+                    <div class="slide slide-4"></div>
+                    <div class="slide slide-5"></div>
+                    <div class="slide slide-6"></div>
+                    <div class="slide slide-7"></div>
+                    <div class="slide slide-8"></div>
+                </div>
+                <div class="slideshow-dots">
+                    <div class="dot active" onclick="currentSlide(1)"></div>
+                    <div class="dot" onclick="currentSlide(2)"></div>
+                    <div class="dot" onclick="currentSlide(3)"></div>
+                    <div class="dot" onclick="currentSlide(4)"></div>
+                    <div class="dot" onclick="currentSlide(5)"></div>
+                    <div class="dot" onclick="currentSlide(6)"></div>
+                    <div class="dot" onclick="currentSlide(7)"></div>
+                    <div class="dot" onclick="currentSlide(8)"></div>
+                </div>
+            </div>
+            <div class="slideshow-nav next" onclick="nextSlide()">›</div>
+        </div>
+
+        <!-- Contact Section - Footer -->
+        <div class="contact-section">
+            <div class="contact-title">Contact Us</div>
+            <div class="contact-items">
+                <a href="https://www.instagram.com/jghs.csf/" target="_blank" class="contact-item">
+                    <div class="contact-icon instagram">
+                        <span>📷</span>
+                    </div>
+                    <div class="contact-label">@jghs.csf<br>Go Follow Us</div>
+                </a>
+                <a href="#" class="contact-item">
+                    <div class="contact-icon remind">
+                        <span>💬</span>
+                    </div>
+                    <div class="contact-label">Join Our Remind | Text to 81010<br>jghscsf2526</div>
+                </a>
+                <a href="https://jghs.org" target="_blank" class="contact-item">
+                    <div class="contact-icon website">
+                        <span>🌐</span>
+                    </div>
+                    <div class="contact-label">School Website<br>jghs.org</div>
+                </a>
+                <a href="mailto:cjohnson@nlmusd.k12.ca.us" class="contact-item">
+                    <div class="contact-icon email">
+                        <span>✉️</span>
+                    </div>
+                    <div class="contact-label">	cjohnson@nlmusd.k12.ca.us</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 1;
+        const totalSlides = 8;
+
+        function showSlide(n) {
+            const dots = document.querySelectorAll('.dot');
+            const slides = document.querySelectorAll('.slide');
+            
+            if (n > totalSlides) currentSlideIndex = 1;
+            if (n < 1) currentSlideIndex = totalSlides;
+            
+            dots.forEach(dot => dot.classList.remove('active'));
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            dots[currentSlideIndex - 1].classList.add('active');
+            slides[currentSlideIndex - 1].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlideIndex++;
+            showSlide(currentSlideIndex);
+        }
+
+        function previousSlide() {
+            currentSlideIndex--;
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(n) {
+            currentSlideIndex = n;
+            showSlide(currentSlideIndex);
+        }
+
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            const overlay = document.getElementById('overlay');
+            
+            navMenu.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        // Auto-advance slideshow every 5 seconds
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>
