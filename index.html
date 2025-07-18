@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CSF hub - Get to know cabinet, understand membership requirements, Updates and Reminders for events ">
+    <meta name="description" content="CSF hub - Get to know cabinet, understand membership requirements, Updates and Reminders for events">
     <meta name="keywords" content="CSF, California Scholarship Federation, Membership Requirements">
     <meta name="author" content="Robert Santiago">
     <title>John Glenn CSF</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="page-container">
         <!-- Header -->
         <div class="header">
             <div class="logo-section">
@@ -41,13 +41,16 @@
                     <a href="#" class="nav-menu-link">Member Requirements</a>
                 </li>
                 <li class="nav-menu-item">
-                    <a href="#" class="nav-menu-link">Awards<br>Recognition</a>
+                    <a href="#" class="nav-menu-link">Awards Recognition</a>
                 </li>
                 <li class="nav-menu-item">
                     <a href="#" class="nav-menu-link">Events</a>
                 </li>
                 <li class="nav-menu-item">
                     <a href="#" class="nav-menu-link">Committee</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="https://www.csf-cjsf.org/" target="_blank" class="nav-menu-link">CSF Official Site</a>
                 </li>
                 <li class="nav-menu-item">
                     <a href="#" class="nav-menu-link">Contact</a>
@@ -58,68 +61,71 @@
         <!-- Overlay -->
         <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-        <!-- Mission Statement -->
-        <div class="mission-section">
-            <div class="mission-box">
-                <div class="mission-content">
-                    <div class="mission-title">Scholars for Service</div>
-                    <div class="mission-subtitle">The California Scholarship Federation (CSF) stands as our campus's largest academic organization, dedicated to celebrating educational excellence while fostering community engagement through extensive volunteer service that strengthens our vibrant and inclusive school environment.</div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Mission Statement -->
+            <div class="mission-section">
+                <div class="mission-box">
+                    <div class="mission-content">
+                        <div class="mission-title">Scholars for Service</div>
+                        <div class="mission-subtitle">The California Scholarship Federation (CSF) stands as our campus's largest academic organization, dedicated to celebrating educational excellence while fostering community engagement through extensive volunteer service that strengthens our vibrant and inclusive school environment.</div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Navigation Icons -->
-        <div class="nav-icons">
-            <div class="nav-container">
-                <a href="#" class="nav-item">
-                    <div class="nav-icon">👥</div>
-                    <div class="nav-label">About us</div>
-                </a>
-                <a href="#" class="nav-item">
-                    <div class="nav-icon">📝</div>
-                    <div class="nav-label">Member Requirements</div>
-                </a>
-                <a href="#" class="nav-item">
-                    <div class="nav-icon">🏆</div>
-                    <div class="nav-label">Awards <br> Recognition</div>
-                </a>
-                <a href="#" class="nav-item">
-                    <div class="nav-icon">🎓</div>
-                    <div class="nav-label">Events</div>
-                </a>
-                <a href="#" class="nav-item">
-                    <div class="nav-icon">📢</div>
-                    <div class="nav-label">Committee</div>
-                </a>
+            <!-- Navigation Icons -->
+            <div class="nav-icons">
+                <div class="nav-container">
+                    <a href="#" class="nav-item">
+                        <div class="nav-icon">👥</div>
+                        <div class="nav-label">About us</div>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <div class="nav-icon">📝</div>
+                        <div class="nav-label">Member Requirements</div>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <div class="nav-icon">🏆</div>
+                        <div class="nav-label">Awards <br> Recognition</div>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <div class="nav-icon">🎓</div>
+                        <div class="nav-label">Events</div>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <div class="nav-icon">📢</div>
+                        <div class="nav-label">Committee</div>
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <!-- Slideshow -->
-        <div class="slideshow-section">
-            <div class="slideshow-nav prev" onclick="previousSlide()">‹</div>
-            <div class="slideshow-content">
-                <div class="slideshow-box">
-                    <div class="slide slide-1 active"></div>
-                    <div class="slide slide-2"></div>
-                    <div class="slide slide-3"></div>
-                    <div class="slide slide-4"></div>
-                    <div class="slide slide-5"></div>
-                    <div class="slide slide-6"></div>
-                    <div class="slide slide-7"></div>
-                    <div class="slide slide-8"></div>
+            <!-- Slideshow -->
+            <div class="slideshow-section">
+                <div class="slideshow-nav prev" onclick="previousSlide()">‹</div>
+                <div class="slideshow-content">
+                    <div class="slideshow-box">
+                        <div class="slide slide-1 active"></div>
+                        <div class="slide slide-2"></div>
+                        <div class="slide slide-3"></div>
+                        <div class="slide slide-4"></div>
+                        <div class="slide slide-5"></div>
+                        <div class="slide slide-6"></div>
+                        <div class="slide slide-7"></div>
+                        <div class="slide slide-8"></div>
+                    </div>
+                    <div class="slideshow-dots">
+                        <div class="dot active" onclick="currentSlide(1)"></div>
+                        <div class="dot" onclick="currentSlide(2)"></div>
+                        <div class="dot" onclick="currentSlide(3)"></div>
+                        <div class="dot" onclick="currentSlide(4)"></div>
+                        <div class="dot" onclick="currentSlide(5)"></div>
+                        <div class="dot" onclick="currentSlide(6)"></div>
+                        <div class="dot" onclick="currentSlide(7)"></div>
+                        <div class="dot" onclick="currentSlide(8)"></div>
+                    </div>
                 </div>
-                <div class="slideshow-dots">
-                    <div class="dot active" onclick="currentSlide(1)"></div>
-                    <div class="dot" onclick="currentSlide(2)"></div>
-                    <div class="dot" onclick="currentSlide(3)"></div>
-                    <div class="dot" onclick="currentSlide(4)"></div>
-                    <div class="dot" onclick="currentSlide(5)"></div>
-                    <div class="dot" onclick="currentSlide(6)"></div>
-                    <div class="dot" onclick="currentSlide(7)"></div>
-                    <div class="dot" onclick="currentSlide(8)"></div>
-                </div>
+                <div class="slideshow-nav next" onclick="nextSlide()">›</div>
             </div>
-            <div class="slideshow-nav next" onclick="nextSlide()">›</div>
         </div>
 
         <!-- Contact Section - Footer -->
@@ -128,32 +134,28 @@
             <div class="contact-items">
                 <a href="https://www.instagram.com/jghs.csf/" target="_blank" class="contact-item">
                     <div class="contact-icon instagram">
-                        <span>📷</span>
+                        <span style="display: none;">📷</span>
                     </div>
                     <div class="contact-label">@jghs.csf<br>Go Follow Us</div>
                 </a>
-                <a href="#" class="contact-item">
+                <a href="https://www.remind.com/" target="_blank" class="contact-item">
                     <div class="contact-icon remind">
-                        <span>💬</span>
+                        <span style="display: none;">💬</span>
                     </div>
                     <div class="contact-label">Join Our Remind | Text to 81010<br>jghscsf2526</div>
                 </a>
                 <a href="https://jghs.org" target="_blank" class="contact-item">
                     <div class="contact-icon website">
-                        <span>🌐</span>
+                        <span style="display: none;">🌐</span>
                     </div>
                     <div class="contact-label">School Website<br>jghs.org</div>
                 </a>
                 <a href="mailto:cjohnson@nlmusd.k12.ca.us" class="contact-item">
                     <div class="contact-icon email">
-                        <span>✉️</span>
+                        <span></span>
                     </div>
                     <div class="contact-label">cjohnson@nlmusd.k12.ca.us</div>
                 </a>
             </div>
         </div>
     </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
