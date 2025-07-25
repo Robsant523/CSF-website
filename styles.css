@@ -1,4 +1,4 @@
-    * {
+* {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -184,6 +184,53 @@
         display: block;
     }
 
+    /* Page Header (for new pages) */
+    .page-header {
+        background-color: #1a1a1a;
+        padding: clamp(30px, 8vw, 60px) clamp(20px, 5vw, 40px);
+        text-align: center;
+        width: min(75%, 1200px);
+        margin: 20px auto;
+        box-sizing: border-box;
+    }
+
+    .page-header-box {
+        border: 2px solid white;
+        padding: clamp(30px, 8vw, 60px) clamp(20px, 10vw, 80px);
+        display: flex;
+        background-color: rgba(0, 0, 0, 0.3);
+        background-image: url('graduation.jpg');
+        background-size: cover;
+        background-position: center;
+        background-blend-mode: overlay;
+        margin: 0 auto;
+        position: relative;
+        min-height: clamp(200px, 40vw, 300px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .page-header-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .page-header-title {
+        font-size: clamp(28px, 7vw, 36px);
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #fbcf20;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .page-header-subtitle {
+        font-size: clamp(16px, 4vw, 18px);
+        font-weight: normal;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        line-height: 1.4;
+    }
+
     /* Mission Statement */
     .mission-section {
         background-color: #1a1a1a;
@@ -232,6 +279,245 @@
         font-weight: normal;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         line-height: 1.4;
+    }
+
+    /* Form Styles */
+    .form-section {
+        background-color: #1a1a1a;
+        padding: clamp(30px, 5vw, 40px);
+        width: min(75%, 1200px);
+        margin: 20px auto;
+        box-sizing: border-box;
+        border: 2px solid #333;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .form-title {
+        color: #fbcf20;
+        font-size: clamp(24px, 5vw, 28px);
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .contact-form {
+        display: grid;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        color: white;
+        font-size: 16px;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 12px;
+        border: 2px solid #4a90e2;
+        border-radius: 4px;
+        background-color: #2a2a2a;
+        color: white;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #fbcf20;
+        background-color: #333;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .form-group select {
+        cursor: pointer;
+    }
+
+    .form-group option {
+        background-color: #2a2a2a;
+        color: white;
+    }
+
+    .form-buttons {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .btn-submit,
+    .btn-reset {
+        padding: 12px 30px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        min-width: 120px;
+    }
+
+    .btn-submit {
+        background-color: #4a90e2;
+        color: white;
+    }
+
+    .btn-submit:hover {
+        background-color: #357abd;
+    }
+
+    .btn-reset {
+        background-color: #666;
+        color: white;
+    }
+
+    .btn-reset:hover {
+        background-color: #555;
+    }
+
+    /* Quick Contact Info */
+    .quick-contact {
+        background-color: #1a1a1a;
+        padding: clamp(20px, 5vw, 30px);
+        width: min(75%, 1200px);
+        margin: 20px auto;
+        box-sizing: border-box;
+        border: 2px solid #333;
+    }
+
+    .quick-contact-container {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .quick-contact-title {
+        color: #fbcf20;
+        font-size: clamp(20px, 4vw, 24px);
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .quick-contact-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .quick-contact-item {
+        color: white;
+        font-size: 16px;
+        padding: 10px;
+        background-color: #2a2a2a;
+        border-radius: 4px;
+    }
+
+    /* Gallery Styles */
+    .gallery-section {
+        background-color: #1a1a1a;
+        padding: clamp(30px, 5vw, 40px);
+        width: min(75%, 1200px);
+        margin: 20px auto;
+        box-sizing: border-box;
+        border: 2px solid #333;
+    }
+
+    .gallery-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .gallery-title {
+        color: #fbcf20;
+        font-size: clamp(24px, 5vw, 28px);
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    /* CSS Image Gallery - Following W3Schools tutorial */
+    div.gallery {
+        margin: 20px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 300px;
+    }
+
+    div.gallery:hover {
+        border: 1px solid #777;
+    }
+
+    div.gallery img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    div.desc {
+        padding: 15px;
+        text-align: center;
+        background-color: #2a2a2a;
+        color: white;
+        font-size: 14px;
+        line-height: 1.4;
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Clear floats after gallery */
+    .gallery-container::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Gallery Info Section */
+    .gallery-info {
+        background-color: #1a1a1a;
+        padding: clamp(20px, 5vw, 30px);
+        width: min(75%, 1200px);
+        margin: 20px auto;
+        box-sizing: border-box;
+        border: 2px solid #333;
+    }
+
+    .gallery-info-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .gallery-info-title {
+        color: #fbcf20;
+        font-size: clamp(20px, 4vw, 24px);
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .gallery-info-text {
+        color: white;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 15px;
     }
 
     /* Navigation Icons */
@@ -376,7 +662,7 @@
     }
 
     .slide-1 { background-image: url('slide1.jpg'); }
-    .slide-2 { background-image: url('slide2.jpg'); }
+    .slide-2 { background-image: url('slide2.png'); }
     .slide-3 { background-image: url('slide3.jpg'); }
     .slide-4 { background-image: url('slide4.jpg'); }
     .slide-5 { background-image: url('slide5.jpg'); }
@@ -482,6 +768,13 @@
         line-height: 1.2;
     }
 
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        div.gallery {
+            width: calc(50% - 40px);
+        }
+    }
+
     @media (max-width: 1024px) {
         .nav-container {
             flex-wrap: wrap;
@@ -495,6 +788,10 @@
         
         .nav-item:not(:last-child)::after {
             display: none;
+        }
+
+        div.gallery {
+            width: calc(50% - 40px);
         }
     }
 
@@ -542,6 +839,26 @@
         .mission-box {
             padding: 30px 20px;
         }
+
+        .form-buttons {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .btn-submit,
+        .btn-reset {
+            width: 200px;
+        }
+
+        div.gallery {
+            width: calc(100% - 40px);
+            margin: 20px auto;
+            float: none;
+        }
+
+        .quick-contact-items {
+            grid-template-columns: 1fr;
+        }
     }
 
     @media (max-width: 480px) {
@@ -576,5 +893,34 @@
         
         .slideshow-box {
             padding: 30px 20px;
+        }
+
+        .form-section {
+            width: 90%;
+            padding: 20px 15px;
+        }
+
+        .gallery-section {
+            width: 90%;
+            padding: 20px 15px;
+        }
+
+        .quick-contact {
+            width: 90%;
+            padding: 20px 15px;
+        }
+
+        .gallery-info {
+            width: 90%;
+            padding: 20px 15px;
+        }
+
+        .page-header {
+            width: 90%;
+            padding: 20px 15px;
+        }
+
+        div.gallery {
+            margin: 15px auto;
         }
     }

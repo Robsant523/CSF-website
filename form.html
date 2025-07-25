@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact John Glenn High School CSF - Get in touch with our California Scholarship Federation chapter">
+    <meta name="keywords" content="CSF, California Scholarship Federation, Contact, John Glenn High School">
+    <meta name="author" content="Robert Santiago">
+    <title>Contact Us - John Glenn CSF</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo"></div>
+                <div class="logo-text">John Glenn High School: CSF</div>
+            </div>
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="nav-menu" id="navMenu">
+            <div class="nav-menu-header">
+                <div class="nav-menu-title">Navigation</div>
+                <button class="close-btn" onclick="toggleMenu()">&times;</button>
+            </div>
+            <ul class="nav-menu-items">
+                <li class="nav-menu-item">
+                    <a href="index.html" class="nav-menu-link">Home</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">About Us</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">Member Requirements</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">Awards Recognition</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">Events</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="gallery.html" class="nav-menu-link">Gallery</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="#" class="nav-menu-link">Committee</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="https://www.csf-cjsf.org/" target="_blank" class="nav-menu-link">CSF Official Site</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="form.html" class="nav-menu-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="page-header-box">
+                    <div class="page-header-content">
+                        <div class="page-header-title">Contact Us</div>
+                        <div class="page-header-subtitle">Get in touch with John Glenn High School's California Scholarship Federation chapter. We're here to help with questions about membership, and events.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form Section -->
+            <div class="form-section">
+                <div class="form-container">
+                    <h2 class="form-title">Send us a Message</h2>
+                    <form class="contact-form" action="mailto:robsant523@gmail.com" method="post" enctype="text/plain">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="grade">Grade Level</label>
+                            <select id="grade" name="grade">
+                                <option value="">Select Grade Level</option>
+                                <option value="9">9th Grade</option>
+                                <option value="10">10th Grade</option>
+                                <option value="11">11th Grade</option>
+                                <option value="12">12th Grade</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inquiry">Type of Inquiry</label>
+                            <select id="inquiry" name="inquiry">
+                                <option value="">Select Inquiry Type</option>
+                                <option value="membership">Membership Information</option>
+                                <option value="events">Upcoming Events</option>
+                                <option value="volunteer">Volunteer Opportunities</option>
+                                <option value="awards">Awards & Recognition</option>
+                                <option value="general">General Question</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Please provide details about your inquiry..." required></textarea>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="submit" class="btn-submit">Submit Message</button>
+                            <button type="reset" class="btn-reset">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        <!-- Contact Section - Footer -->
+        <div class="contact-section">
+            <div class="contact-title">Connect With Us</div>
+            <div class="contact-items">
+                <a href="https://www.instagram.com/jghs.csf/" target="_blank" class="contact-item">
+                    <div class="contact-icon instagram">
+                        <span style="display: none;">📷</span>
+                    </div>
+                    <div class="contact-label">@jghs.csf<br>Go Follow Us</div>
+                </a>
+                <a href="https://www.remind.com/" target="_blank" class="contact-item">
+                    <div class="contact-icon remind">
+                        <span style="display: none;">💬</span>
+                    </div>
+                    <div class="contact-label">Join Our Remind | Text to 81010<br>jghscsf2526</div>
+                </a>
+                <a href="https://jghs.org" target="_blank" class="contact-item">
+                    <div class="contact-icon website">
+                        <span style="display: none;">🌐</span>
+                    </div>
+                    <div class="contact-label">School Website<br>jghs.org</div>
+                </a>
+                <a href="mailto:cjohnson@nlmusd.k12.ca.us" class="contact-item">
+                    <div class="contact-icon email">
+                        <span></span>
+                    </div>
+                    <div class="contact-label">cjohnson@nlmusd.k12.ca.us</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
