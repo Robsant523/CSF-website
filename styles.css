@@ -794,147 +794,136 @@
             width: calc(50% - 40px);
         }
     }
+    .gallery-section {
+        background-color: #1a1a1a;
+        padding: clamp(30px, 5vw, 40px);
+        width: min(75%, 1200px);
+        margin: 20px auto;
+        box-sizing: border-box;
+        border: 2px solid #333;
+    }
+
+    .gallery-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .gallery-title {
+        color: #fbcf20;
+        font-size: clamp(24px, 5vw, 28px);
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .officer-title {
+        color: #fbcf20;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin: 30px 0 15px 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        clear: both;
+        width: 100%;
+    }
+
+    .officer-title:first-of-type {
+        margin-top: 0;
+    }
+
+    /* Updated Gallery Layout - Centered with better spacing */
+    div.gallery {
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        width: 300px;
+        display: block;
+        float: none;
+        text-align: center;
+    }
+
+    div.gallery:hover {
+        border: 1px solid #777;
+    }
+
+    div.gallery img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+    }
+
+    div.desc {
+        padding: 20px 15px;
+        text-align: center;
+        background-color: #2a2a2a;
+        color: white;
+        font-size: 14px;
+        line-height: 1.4;
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px; /* Added space between image and description */
+    }
+
+    /* Clear floats after gallery */
+    .gallery-container::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Responsive adjustments for centered layout */
+    @media (max-width: 1200px) {
+        div.gallery {
+            width: 300px;
+            margin: 20px auto;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        div.gallery {
+            width: 300px;
+            margin: 20px auto;
+        }
+    }
 
     @media (max-width: 768px) {
-        .header {
-            padding: 15px;
-        }
-        
-        .logo-text {
-            font-size: 18px;
-        }
-        
-        .nav-container {
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .nav-item {
-            flex: none;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .nav-item:not(:last-child)::after {
-            display: none;
-        }
-
-        .slideshow-nav {
-            font-size: 32px;
-            padding: 0 15px;
-        }
-
-        .contact-items {
-            flex-direction: column;
-            gap: 30px;
-        }
-        
-        .contact-item {
-            min-width: auto;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .mission-box {
-            padding: 30px 20px;
-        }
-
-        .form-buttons {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .btn-submit,
-        .btn-reset {
-            width: 200px;
-        }
-
         div.gallery {
             width: calc(100% - 40px);
+            max-width: 350px;
             margin: 20px auto;
-            float: none;
         }
-
-        .quick-contact-items {
-            grid-template-columns: 1fr;
+        
+        div.desc {
+            padding: 25px 20px;
+            margin-top: 15px;
         }
     }
 
     @media (max-width: 480px) {
-        .header {
-            padding: 10px;
-        }
-        
-        .logo {
-            width: 50px;
-            height: 50px;
-        }
-        
-        .menu-icon {
-            width: 50px;
-            height: 50px;
-        }
-        
-        .nav-icons {
-            width: 90%;
-            padding: 15px;
-        }
-        
-        .mission-section {
-            width: 90%;
-            padding: 20px 15px;
-        }
-        
-        .slideshow-section {
-            width: 90%;
-            padding: 20px 15px;
-        }
-        
-        .slideshow-box {
-            padding: 30px 20px;
-        }
-
-        .form-section {
-            width: 90%;
-            padding: 20px 15px;
-        }
-
-        .gallery-section {
-            width: 90%;
-            padding: 20px 15px;
-        }
-
-        .quick-contact {
-            width: 90%;
-            padding: 20px 15px;
-        }
-
-        .gallery-info {
-            width: 90%;
-            padding: 20px 15px;
-        }
-
-        .page-header {
-            width: 90%;
-            padding: 20px 15px;
-        }
-
         div.gallery {
+            width: calc(100% - 20px);
             margin: 15px auto;
         }
-    }
-           .officer-title {
-            color: #fbcf20;
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            margin: 30px 0 15px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            clear: both;
-            width: 100%;
-        }
         
-        .officer-title:first-of-type {
-            margin-top: 0;
+        div.desc {
+            padding: 20px 15px;
+            margin-top: 12px;
         }
+    }
+
+    .officer-title {
+        color: #fbcf20;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin: 30px 0 15px 0;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        clear: both;
+        width: 100%;
+    }
+    
+    .officer-title:first-of-type {
+        margin-top: 0;
+    }
