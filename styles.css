@@ -924,3 +924,17 @@
             margin: 15px auto;
         }
     }
+           .officer-title {
+            color: #fbcf20;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin: 30px 0 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            clear: both;
+            width: 100%;
+        }
+        
+        .officer-title:first-of-type {
+            margin-top: 0;
+        }
