@@ -18,7 +18,7 @@
     .page-container {
         display: grid;
         grid-template-rows: auto 1fr auto;
-        min-height: 100vh;
+        min-height: 20vh;
         background-color: white;
     }
 
@@ -166,6 +166,8 @@
         flex-direction: column;
         gap: 20px;
         flex: 1;
+        margin-top: 0; 
+        padding-top: 0; 
     }
 
     /* Overlay */
@@ -190,7 +192,7 @@
         padding: clamp(30px, 8vw, 60px) clamp(20px, 5vw, 40px);
         text-align: center;
         width: min(75%, 1200px);
-        margin: 20px auto;
+        margin: 0 auto; 
         box-sizing: border-box;
     }
 
