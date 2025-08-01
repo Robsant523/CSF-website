@@ -30,6 +30,7 @@ function currentSlide(n) {
     showSlide(currentSlideIndex);
 }
 
+// Navigation menu toggle
 function toggleMenu() {
     const navMenu = document.getElementById('navMenu');
     const overlay = document.getElementById('overlay');
@@ -38,265 +39,262 @@ function toggleMenu() {
     overlay.classList.toggle('open');
 }
 
-// Auto-advance slideshow every 5 seconds
-setInterval(nextSlide, 5000);
-
-const events = [
-    {
-        date: '2025-08-15',
-        title: 'CSF Welcome Back Meeting',
-        description: 'Join us for our first meeting of the school year! We\'ll discuss membership requirements, upcoming events, and volunteer opportunities. Pizza will be provided!'
-    },
-    {
-        date: '2025-08-22',
-        title: 'Community Service: Food Bank',
-        description: 'Help pack food donations at the local food bank. This counts toward your required community service hours. Meet at school at 9:00 AM.'
-    },
-    {
-        date: '2025-09-05',
-        title: 'Study Group Session',
-        description: 'Peer tutoring session for all subjects. Senior CSF members will be available to help underclassmen with coursework.'
-    },
-    {
-        date: '2025-09-12',
-        title: 'Officer Elections',
-        description: 'Elections for CSF cabinet positions. Applications due by September 10th. All current members are eligible to vote.'
-    },
-    {
-        date: '2025-09-20',
-        title: 'San Diego Zoo Field Trip',
-        description: 'Annual educational field trip to the San Diego Zoo. Transportation and admission included. Limited spots available - sign up early!'
-    },
-    {
-        date: '2025-10-10',
-        title: 'Scholarship Workshop',
-        description: 'Learn about available scholarships and get help with applications. Guest speakers from local colleges will be present.'
-    },
-    {
-        date: '2025-10-25',
-        title: 'Halloween Fundraiser',
-        description: 'Costume contest and bake sale to raise funds for upcoming activities. Prizes for best costumes in each category!'
-    },
-    {
-        date: '2025-11-15',
-        title: 'Thanksgiving Food Drive',
-        description: 'Annual food drive to help local families during Thanksgiving. Collection boxes will be placed around campus.'
-    }
-];
-
-// Add event flyer images here - just add image paths to this array
-const eventFlyers = [
-    'flyer1.png',
-    'flyer2.png',
-    'flyer3.png',
-    'flyer4.png',
-    'flyer5.png',
-    'flyer6.png',
-    'flyer7.png',
-    'flyer8.png'
-];
-
-// ================================
-// CALENDAR FUNCTIONALITY
-// ================================
-
+// Calendar navigation
 let currentDate = new Date();
-let currentMonth = currentDate.getMonth();
-let currentYear = currentDate.getFullYear();
+const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
 
-const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-];
-
-const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-function generateCalendar() {
-    const calendarGrid = document.getElementById('calendarGrid');
-    const currentMonthElement = document.getElementById('currentMonth');
-    
-    // Clear existing calendar
-    calendarGrid.innerHTML = '';
-    
-    // Set month/year display
-    currentMonthElement.textContent = `${months[currentMonth]} ${currentYear}`;
-    
-    // Add day headers
-    daysOfWeek.forEach(day => {
-        const dayHeader = document.createElement('div');
-        dayHeader.className = 'calendar-day-header';
-        dayHeader.textContent = day;
-        calendarGrid.appendChild(dayHeader);
-    });
-    
-    // Get first day of month and number of days
-    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-    const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-    const daysInPrevMonth = new Date(currentYear, currentMonth, 0).getDate();
-    
-    // Add empty cells for previous month
-    for (let i = firstDay - 1; i >= 0; i--) {
-        const dayCell = createDayCell(daysInPrevMonth - i, true);
-        calendarGrid.appendChild(dayCell);
-    }
-    
-    // Add days of current month
-    for (let day = 1; day <= daysInMonth; day++) {
-        const dayCell = createDayCell(day, false);
-        calendarGrid.appendChild(dayCell);
-    }
-    
-    // Add empty cells for next month
-    const remainingCells = 42 - (firstDay + daysInMonth);
-    for (let day = 1; day <= remainingCells; day++) {
-        const dayCell = createDayCell(day, true);
-        calendarGrid.appendChild(dayCell);
-    }
-}
-
-function createDayCell(day, isOtherMonth) {
-    const dayCell = document.createElement('div');
-    dayCell.className = 'calendar-day';
-    
-    if (isOtherMonth) {
-        dayCell.classList.add('other-month');
-    }
-    
-    // Check if this is today
-    const today = new Date();
-    if (!isOtherMonth && 
-        day === today.getDate() && 
-        currentMonth === today.getMonth() && 
-        currentYear === today.getFullYear()) {
-        dayCell.classList.add('today');
-    }
-    
-    const dayNumber = document.createElement('div');
-    dayNumber.className = 'day-number';
-    dayNumber.textContent = day;
-    dayCell.appendChild(dayNumber);
-    
-    // Check for events on this day
-    if (!isOtherMonth) {
-        const dateString = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        const dayEvents = events.filter(event => event.date === dateString);
-        
-        if (dayEvents.length > 0) {
-            dayCell.classList.add('has-event');
-            dayEvents.forEach(event => {
-                const eventIndicator = document.createElement('div');
-                eventIndicator.className = 'event-indicator';
-                eventIndicator.textContent = event.title;
-                dayCell.appendChild(eventIndicator);
-            });
-            
-            // Add click event to show details
-            dayCell.addEventListener('click', () => showEventDetails(dayEvents[0]));
-        }
-    }
-    
-    return dayCell;
+function updateCalendarHeader() {
+    const currentMonth = document.getElementById('currentMonth');
+    currentMonth.textContent = monthNames[currentDate.getMonth()] + ' ' + currentDate.getFullYear();
 }
 
 function previousMonth() {
-    currentMonth--;
-    if (currentMonth < 0) {
-        currentMonth = 11;
-        currentYear--;
-    }
-    generateCalendar();
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    updateCalendarHeader();
+    // Here you would typically regenerate the calendar grid
+    // generateCalendarGrid();
 }
 
 function nextMonth() {
-    currentMonth++;
-    if (currentMonth > 11) {
-        currentMonth = 0;
-        currentYear++;
-    }
-    generateCalendar();
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    updateCalendarHeader();
+    // Here you would typically regenerate the calendar grid
+    // generateCalendarGrid();
 }
 
-function showEventDetails(event) {
-    document.getElementById('modalTitle').textContent = event.title;
-    document.getElementById('modalDate').textContent = new Date(event.date).toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-    document.getElementById('modalDescription').textContent = event.description;
+// Event modal functions
+function openEventModal(title, date, description) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalDate').textContent = date;
+    document.getElementById('modalDescription').textContent = description;
     document.getElementById('eventModal').style.display = 'block';
+    
+    // Prevent body scrolling when modal is open
+    document.body.style.overflow = 'hidden';
 }
 
 function closeEventModal() {
     document.getElementById('eventModal').style.display = 'none';
+    
+    // Restore body scrolling
+    document.body.style.overflow = '';
 }
 
-// ================================
-// REVOLVING SLIDESHOW FUNCTIONALITY
-// ================================
-
-function generateSlideshow() {
-    const slideshowTrack = document.getElementById('slideshowTrack');
-    
-    // Clear existing content
-    slideshowTrack.innerHTML = '';
-    
-    // If no flyers, show placeholder
-    if (eventFlyers.length === 0) {
-        const placeholderSlide = document.createElement('div');
-        placeholderSlide.className = 'slideshow-slide';
-        placeholderSlide.innerHTML = '<div class="slideshow-placeholder">No event flyers available</div>';
-        slideshowTrack.appendChild(placeholderSlide);
-        return;
-    }
-    
-    // Create slides - duplicate the array to ensure seamless looping
-    const allFlyers = [...eventFlyers, ...eventFlyers];
-    
-    allFlyers.forEach((flyer, index) => {
-        const slide = document.createElement('div');
-        slide.className = 'slideshow-slide';
-        slide.style.backgroundImage = `url('${flyer}')`;
-        slide.title = `Event Flyer ${(index % eventFlyers.length) + 1}`;
-        slideshowTrack.appendChild(slide);
-    });
-    
-    // Adjust animation speed based on number of flyers
-    if (eventFlyers.length <= 4) {
-        slideshowTrack.classList.add('speed-slow');
-    } else if (eventFlyers.length <= 6) {
-        slideshowTrack.classList.add('speed-medium');
-    } else {
-        slideshowTrack.classList.add('speed-fast');
-    }
-}
-
-// ================================
-// MENU FUNCTIONALITY (from existing pages)
-// ================================
-
-function toggleMenu() {
-    const navMenu = document.getElementById('navMenu');
-    const overlay = document.getElementById('overlay');
-    
-    navMenu.classList.toggle('open');
-    overlay.classList.toggle('open');
-}
-
-// ================================
-// INITIALIZE PAGE
-// ================================
-
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    generateCalendar();
-    generateSlideshow();
+    // Initialize calendar
+    updateCalendarHeader();
     
-    // Close modal when clicking outside
-    window.addEventListener('click', function(event) {
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
         const modal = document.getElementById('eventModal');
-        if (event.target === modal) {
+        if (event.target == modal) {
             closeEventModal();
         }
+    }
+    
+    // Close menu when clicking on overlay
+    document.getElementById('overlay').addEventListener('click', function() {
+        toggleMenu();
     });
+    
+    // Handle menu state changes for body overflow
+    const navMenu = document.getElementById('navMenu');
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                if (navMenu.classList.contains('open')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+    });
+    
+    observer.observe(navMenu, {
+        attributes: true,
+        attributeFilter: ['class']
+    });
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        // Close menu on resize to prevent layout issues
+        if (window.innerWidth > 768) {
+            const navMenu = document.getElementById('navMenu');
+            const overlay = document.getElementById('overlay');
+            navMenu.classList.remove('open');
+            overlay.classList.remove('open');
+        }
+    });
+    
+    // Touch event optimization for mobile
+    document.addEventListener('touchstart', function() {}, { passive: true });
+    document.addEventListener('touchmove', function() {}, { passive: true });
+    
+    // Handle escape key for modal and menu
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            // Close modal if open
+            const modal = document.getElementById('eventModal');
+            if (modal.style.display === 'block') {
+                closeEventModal();
+            }
+            
+            // Close menu if open
+            const navMenu = document.getElementById('navMenu');
+            if (navMenu.classList.contains('open')) {
+                toggleMenu();
+            }
+        }
+    });
+});
+
+// Optional: Calendar generation function for dynamic calendars
+function generateCalendarGrid() {
+    const calendarGrid = document.getElementById('calendarGrid');
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    
+    // Clear existing calendar (except headers)
+    const headers = calendarGrid.querySelectorAll('.calendar-day-header');
+    calendarGrid.innerHTML = '';
+    headers.forEach(header => calendarGrid.appendChild(header));
+    
+    // Get first day of month and number of days
+    const firstDay = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const daysInPrevMonth = new Date(year, month, 0).getDate();
+    
+    // Add previous month's trailing days
+    for (let i = firstDay - 1; i >= 0; i--) {
+        const dayElement = createCalendarDay(daysInPrevMonth - i, true);
+        calendarGrid.appendChild(dayElement);
+    }
+    
+    // Add current month's days
+    const today = new Date();
+    for (let day = 1; day <= daysInMonth; day++) {
+        const isToday = (year === today.getFullYear() && 
+                        month === today.getMonth() && 
+                        day === today.getDate());
+        const dayElement = createCalendarDay(day, false, isToday);
+        calendarGrid.appendChild(dayElement);
+    }
+    
+    // Add next month's leading days
+    const totalCells = calendarGrid.children.length - 7; // Subtract headers
+    const remainingCells = 42 - totalCells; // 6 rows * 7 days
+    for (let day = 1; day <= remainingCells; day++) {
+        const dayElement = createCalendarDay(day, true);
+        calendarGrid.appendChild(dayElement);
+    }
+}
+
+function createCalendarDay(dayNumber, isOtherMonth = false, isToday = false) {
+    const dayElement = document.createElement('div');
+    dayElement.className = 'calendar-day';
+    
+    if (isOtherMonth) {
+        dayElement.classList.add('other-month');
+    }
+    
+    if (isToday) {
+        dayElement.classList.add('today');
+    }
+    
+    const dayNumberElement = document.createElement('div');
+    dayNumberElement.className = 'day-number';
+    dayNumberElement.textContent = dayNumber;
+    
+    dayElement.appendChild(dayNumberElement);
+    
+    // Add click event for today
+    if (isToday) {
+        dayElement.onclick = () => openEventModal('Today', 
+            `${monthNames[currentDate.getMonth()]} ${dayNumber}, ${currentDate.getFullYear()}`, 
+            'Current day highlighted');
+    }
+    
+    return dayElement;
+}
+
+// Sample events data structure (you can expand this)
+const eventsData = {
+    '2025-08-05': {
+        title: 'CSF Meeting',
+        description: 'Monthly CSF chapter meeting at 3:30 PM in Room 205'
+    },
+    '2025-08-12': {
+        title: 'Community Service',
+        description: 'Community service project at local food bank from 9:00 AM to 2:00 PM'
+    },
+    '2025-08-15': {
+        title: 'Study Session',
+        description: 'Group study session for upcoming semester in the library from 4:00 PM to 6:00 PM'
+    },
+    '2025-08-19': {
+        title: 'Awards Ceremony',
+        description: 'CSF Awards Recognition Ceremony in the auditorium at 7:00 PM'
+    },
+    '2025-08-25': {
+        title: 'New Member Orientation',
+        description: 'Orientation for new CSF members at 3:30 PM in Room 205'
+    }
+};
+
+// Function to add events to calendar days (for dynamic calendar)
+function addEventsToCalendar() {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+    
+    Object.keys(eventsData).forEach(dateKey => {
+        const eventDate = new Date(dateKey);
+        if (eventDate.getFullYear() === year && eventDate.getMonth() === month) {
+            const day = eventDate.getDate();
+            const dayElements = document.querySelectorAll('.calendar-day:not(.other-month)');
+            
+            dayElements.forEach(dayElement => {
+                const dayNumber = dayElement.querySelector('.day-number').textContent;
+                if (parseInt(dayNumber) === day) {
+                    dayElement.classList.add('has-event');
+                    
+                    const eventIndicator = document.createElement('div');
+                    eventIndicator.className = 'event-indicator';
+                    eventIndicator.textContent = eventsData[dateKey].title;
+                    dayElement.appendChild(eventIndicator);
+                    
+                    dayElement.onclick = () => openEventModal(
+                        eventsData[dateKey].title,
+                        `${monthNames[month]} ${day}, ${year}`,
+                        eventsData[dateKey].description
+                    );
+                }
+            });
+        }
+    });
+}
+
+// Slideshow functionality (if needed)
+function initializeSlideshow() {
+    const slideshowTrack = document.getElementById('slideshowTrack');
+    if (slideshowTrack) {
+        // You can add dynamic slideshow functionality here
+        // For now, it uses CSS animations
+        
+        // Pause animation on hover
+        slideshowTrack.addEventListener('mouseenter', function() {
+            this.style.animationPlayState = 'paused';
+        });
+        
+        slideshowTrack.addEventListener('mouseleave', function() {
+            this.style.animationPlayState = 'running';
+        });
+    }
+}
+
+// Initialize slideshow when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSlideshow();
 });

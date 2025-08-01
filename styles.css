@@ -883,11 +883,15 @@
             min-height: 80px;
         }
     }
+
+    /* Calendar.html css start*/
+
+/* Calendar Section Specific Styles */
 .calendar-section {
     background-color: #1a1a1a;
-    padding: clamp(30px, 5vw, 40px);
-    width: min(90%, 1200px);
-    margin: 20px auto;
+    padding: clamp(20px, 4vw, 40px);
+    width: min(95%, 1200px);
+    margin: clamp(10px, 2vw, 20px) auto;
     box-sizing: border-box;
     border: 2px solid #333;
 }
@@ -899,8 +903,8 @@
 
 .calendar-title {
     color: #fbcf20;
-    font-size: clamp(24px, 5vw, 28px);
-    margin-bottom: 30px;
+    font-size: clamp(18px, 4vw, 28px);
+    margin-bottom: clamp(20px, 4vw, 30px);
     text-align: center;
     font-weight: bold;
 }
@@ -909,26 +913,27 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: clamp(20px, 4vw, 30px);
     flex-wrap: wrap;
-    gap: 20px;
+    gap: clamp(15px, 3vw, 20px);
 }
 
 .month-navigation {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: clamp(15px, 3vw, 20px);
 }
 
 .nav-btn {
     background-color: #4a90e2;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 15px);
     border-radius: 5px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: clamp(14px, 3vw, 18px);
     transition: background-color 0.3s ease;
+    touch-action: manipulation;
 }
 
 .nav-btn:hover {
@@ -937,39 +942,42 @@
 
 .current-month {
     color: white;
-    font-size: clamp(18px, 4vw, 24px);
+    font-size: clamp(16px, 3.5vw, 24px);
     font-weight: bold;
-    min-width: 200px;
+    min-width: clamp(150px, 30vw, 200px);
     text-align: center;
 }
 
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 2px;
+    gap: clamp(1px, 0.2vw, 2px);
     background-color: #333;
     border: 2px solid #333;
+    width: 100%;
+    max-width: 100%;
 }
 
 .calendar-day-header {
     background-color: #4a90e2;
     color: white;
-    padding: 15px 5px;
+    padding: clamp(8px, 2vw, 15px) clamp(3px, 1vw, 5px);
     text-align: center;
     font-weight: bold;
-    font-size: clamp(12px, 2.5vw, 14px);
+    font-size: clamp(10px, 2vw, 14px);
 }
 
 .calendar-day {
     background-color: #2a2a2a;
     color: white;
-    min-height: clamp(60px, 12vw, 100px);
-    padding: 8px;
+    min-height: clamp(50px, 10vh, 100px);
+    padding: clamp(4px, 1vw, 8px);
     position: relative;
     display: flex;
     flex-direction: column;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    touch-action: manipulation;
 }
 
 .calendar-day:hover {
@@ -996,18 +1004,18 @@
 }
 
 .day-number {
-    font-size: clamp(14px, 3vw, 16px);
+    font-size: clamp(12px, 2.5vw, 16px);
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: clamp(3px, 0.5vw, 5px);
 }
 
 .event-indicator {
     background-color: #fbcf20;
     color: #1a1a1a;
-    font-size: clamp(8px, 1.5vw, 10px);
-    padding: 2px 4px;
+    font-size: clamp(7px, 1.5vw, 10px);
+    padding: clamp(1px, 0.5vw, 2px) clamp(2px, 0.8vw, 4px);
     border-radius: 3px;
-    margin-bottom: 2px;
+    margin-bottom: clamp(1px, 0.3vw, 2px);
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -1027,24 +1035,27 @@
 
 .event-modal-content {
     background-color: #1a1a1a;
-    margin: 5% auto;
-    padding: 30px;
+    margin: clamp(2%, 5vh, 5%) auto;
+    padding: clamp(20px, 5vw, 30px);
     border: 2px solid #4a90e2;
     border-radius: 8px;
-    width: min(90%, 600px);
+    width: min(95%, 600px);
     color: white;
     position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .event-modal-close {
     color: white;
     float: right;
-    font-size: 28px;
+    font-size: clamp(24px, 5vw, 28px);
     font-weight: bold;
     cursor: pointer;
     position: absolute;
-    right: 20px;
-    top: 15px;
+    right: clamp(15px, 3vw, 20px);
+    top: clamp(10px, 2vw, 15px);
+    touch-action: manipulation;
 }
 
 .event-modal-close:hover {
@@ -1053,28 +1064,29 @@
 
 .event-modal-title {
     color: #fbcf20;
-    font-size: 24px;
+    font-size: clamp(18px, 4vw, 24px);
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: clamp(15px, 3vw, 20px);
+    padding-right: clamp(30px, 6vw, 40px);
 }
 
 .event-modal-date {
     color: #4a90e2;
-    font-size: 18px;
-    margin-bottom: 15px;
+    font-size: clamp(14px, 3vw, 18px);
+    margin-bottom: clamp(12px, 2.5vw, 15px);
 }
 
 .event-modal-description {
     line-height: 1.6;
-    font-size: 16px;
+    font-size: clamp(12px, 2.8vw, 16px);
 }
 
 /* Revolving Slideshow Styles */
 .carousel-section {
     background-color: #1a1a1a;
-    padding: clamp(30px, 5vw, 40px);
-    width: min(90%, 1200px);
-    margin: 20px auto;
+    padding: clamp(20px, 4vw, 40px);
+    width: min(95%, 1200px);
+    margin: clamp(10px, 2vw, 20px) auto;
     box-sizing: border-box;
     border: 2px solid #333;
 }
@@ -1087,8 +1099,8 @@
 
 .carousel-title {
     color: #fbcf20;
-    font-size: clamp(24px, 5vw, 28px);
-    margin-bottom: 30px;
+    font-size: clamp(18px, 4vw, 28px);
+    margin-bottom: clamp(20px, 4vw, 30px);
     text-align: center;
     font-weight: bold;
 }
@@ -1097,7 +1109,7 @@
     position: relative;
     overflow: hidden;
     border: 2px solid #333;
-    height: clamp(300px, 40vw, 400px);
+    height: clamp(200px, 30vh, 400px);
 }
 
 .slideshow-track {
@@ -1107,8 +1119,8 @@
 }
 
 .slideshow-slide {
-    width: clamp(250px, 30vw, 300px);
-    height: clamp(300px, 40vw, 400px);
+    width: clamp(150px, 25vw, 300px);
+    height: clamp(200px, 30vh, 400px);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -1134,9 +1146,9 @@
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: clamp(16px, 3vw, 18px);
+    font-size: clamp(12px, 2.5vw, 18px);
     text-align: center;
-    padding: 20px;
+    padding: clamp(15px, 3vw, 20px);
     background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
 }
 
@@ -1184,6 +1196,24 @@
 }
 
 @media (max-width: 480px) {
+    .calendar-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .month-navigation {
+        order: 2;
+    }
+
+    .current-month {
+        order: 1;
+        margin-bottom: 10px;
+    }
+
+    .slideshow-slide {
+        width: clamp(120px, 40vw, 200px);
+    }
+
     .calendar-day {
         min-height: 60px;
         padding: 5px;
@@ -1196,5 +1226,61 @@
     .event-indicator {
         font-size: 8px;
         padding: 1px 3px;
+    }
+}
+
+/* Extra Small Screens */
+@media (max-width: 320px) {
+    .calendar-day {
+        min-height: 45px;
+        padding: 3px;
+    }
+
+    .day-number {
+        font-size: 10px;
+    }
+
+    .event-indicator {
+        font-size: 6px;
+        padding: 1px 2px;
+    }
+
+    .slideshow-slide {
+        width: 100px;
+        height: 150px;
+    }
+}
+
+/* Large Screen Adjustments */
+@media (min-width: 1400px) {
+    .carousel-section, .calendar-section {
+        width: min(85%, 1400px);
+    }
+}
+
+/* Landscape Mobile Devices */
+@media (max-height: 500px) and (orientation: landscape) {
+    .slideshow-wrapper {
+        height: 180px;
+    }
+
+    .slideshow-slide {
+        height: 180px;
+    }
+
+    .calendar-day {
+        min-height: 40px;
+    }
+}
+
+/* Touch-friendly adjustments */
+@media (pointer: coarse) {
+    .nav-btn, .calendar-day, .event-modal-close {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .calendar-day {
+        padding: 6px;
     }
 }
